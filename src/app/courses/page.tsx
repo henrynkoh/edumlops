@@ -126,13 +126,28 @@ function CourseCard({
   image: string;
   contextFeatures: string[];
 }) {
-  // Fallback image in case the actual image doesn't load
-  const placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 600'%3E%3Crect fill='%23e2e8f0' width='1000' height='600'/%3E%3Ctext fill='%23718096' font-family='sans-serif' font-size='60' x='50%' y='50%' text-anchor='middle'%3ECourse Image%3C/text%3E%3C/svg%3E";
+  // Generate course-specific placeholder images with tech themes
+  const generateImageUrl = (courseTitle: string) => {
+    // Map course titles to appropriate placeholder images
+    const imageMap: {[key: string]: string} = {
+      "MLOps Fundamentals": "https://placehold.co/600x400/3498db/FFFFFF?text=MLOps+Fundamentals&font=montserrat",
+      "Retrieval-Augmented Generation": "https://placehold.co/600x400/9b59b6/FFFFFF?text=RAG&font=montserrat",
+      "VESSL AI Pipeline Mastery": "https://placehold.co/600x400/e74c3c/FFFFFF?text=AI+Pipelines&font=montserrat",
+      "Databricks MLflow Integration": "https://placehold.co/600x400/2ecc71/FFFFFF?text=MLflow&font=montserrat",
+      "TrueFoundry Kubernetes Deployment": "https://placehold.co/600x400/f39c12/FFFFFF?text=K8s+Deployment&font=montserrat",
+      "n8n Workflow Automation": "https://placehold.co/600x400/1abc9c/FFFFFF?text=Workflow+Automation&font=montserrat"
+    };
+    
+    return imageMap[courseTitle] || `https://placehold.co/600x400/95a5a6/FFFFFF?text=${encodeURIComponent(courseTitle)}&font=montserrat`;
+  };
   
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
       <div className="h-48 bg-gray-200 relative">
-        <div className="absolute inset-0 bg-center bg-cover" style={{ backgroundImage: `url(${placeholderImage})` }}></div>
+        <div 
+          className="absolute inset-0 bg-center bg-cover" 
+          style={{ backgroundImage: `url(${generateImageUrl(title)})` }}
+        ></div>
         <div className="absolute bottom-0 left-0 bg-primary-600 text-white px-3 py-1 text-sm font-medium">{level}</div>
       </div>
       <div className="p-6">
