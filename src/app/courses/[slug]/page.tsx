@@ -398,6 +398,13 @@ export default function CourseDetail({ params }: { params: { slug: string } }) {
     notFound();
   }
 
+  // Background color for level badges
+  const levelColors: Record<string, string> = {
+    'Beginner': 'bg-blue-600',
+    'Intermediate': 'bg-purple-600',
+    'Advanced': 'bg-red-600'
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -408,13 +415,13 @@ export default function CourseDetail({ params }: { params: { slug: string } }) {
             className="absolute inset-0 bg-center bg-cover" 
             style={{ backgroundImage: `url(${course.image})` }}
           ></div>
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30"></div>
           <div className="relative container mx-auto px-4 h-full flex flex-col justify-center text-white">
-            <div className="inline-block px-3 py-1 text-sm font-semibold bg-primary-600 rounded-md mb-4">
+            <div className={`inline-block px-4 py-1 text-sm font-semibold ${levelColors[course.level] || 'bg-primary-600'} rounded-md mb-4 w-auto max-w-[120px] text-center`}>
               {course.level}
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-2">{course.title}</h1>
-            <p className="text-xl">Instructor: {course.instructor}</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-2 drop-shadow-sm">{course.title}</h1>
+            <p className="text-xl drop-shadow-sm">Instructor: {course.instructor}</p>
           </div>
         </div>
         
@@ -463,16 +470,16 @@ export default function CourseDetail({ params }: { params: { slug: string } }) {
           {/* Syllabus */}
           <div className="bg-white p-6 rounded-lg shadow-md mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Course Syllabus</h2>
-            <div className="space-y-4">
+            <div className="space-y-5">
               {course.syllabus.map((week: any, index: number) => (
-                <div key={index} className="border-b border-gray-100 pb-4">
+                <div key={index} className="border border-gray-100 rounded-lg p-4 transition-all hover:shadow-md">
                   <div className="flex items-start">
-                    <div className="bg-primary-100 text-primary-600 w-8 h-8 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <div className={`${levelColors[course.level] || 'bg-primary-600'} text-white w-10 h-10 rounded-full flex items-center justify-center mr-4 flex-shrink-0 shadow-sm`}>
                       {week.week}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-800">{week.title}</h3>
-                      <p className="text-gray-600 mt-1">{week.content}</p>
+                      <p className="text-gray-600 mt-2">{week.content}</p>
                     </div>
                   </div>
                 </div>
