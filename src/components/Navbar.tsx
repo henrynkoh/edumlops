@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Pipelines', href: '/pipelines' },
   { label: 'Courses', href: '/courses' },
   { label: 'Context Manager', href: '/context' },
+  { label: 'About', href: '/about' },
 ];
 
 export default function Navbar() {
