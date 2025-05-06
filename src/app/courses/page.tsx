@@ -141,6 +141,11 @@ function CourseCard({
     return imageMap[courseTitle] || `https://placehold.co/600x400/95a5a6/FFFFFF?text=${encodeURIComponent(courseTitle)}&font=montserrat`;
   };
   
+  // Function to convert title to slug for URL
+  const titleToSlug = (title: string) => {
+    return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  };
+  
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
       <div className="h-48 bg-gray-200 relative">
@@ -179,9 +184,12 @@ function CourseCard({
           </div>
         </div>
         
-        <button className="w-full bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-md transition-colors">
+        <a 
+          href={`/courses/${titleToSlug(title)}`}
+          className="block w-full bg-primary-600 hover:bg-primary-700 text-white py-2 rounded-md transition-colors text-center"
+        >
           View Course
-        </button>
+        </a>
       </div>
     </div>
   );
