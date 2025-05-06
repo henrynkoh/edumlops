@@ -198,11 +198,11 @@ const COURSES = {
       },
       {
         question: 'How does Hyperpocket integrate with the Model Context Platform?',
-        content: 'Hyperpocket's multi-agent infrastructure leverages MCP for enhanced context sharing between agents, allowing for more coordinated and coherent AI system behavior. The course includes practical implementations of this integration.'
+        content: "Hyperpocket's multi-agent infrastructure leverages MCP for enhanced context sharing between agents, allowing for more coordinated and coherent AI system behavior. The course includes practical implementations of this integration."
       },
       {
         question: 'Will I need to have access to VESSL AI to complete the course?',
-        answer: 'The course provides access to a VESSL AI environment for all exercises and projects. You'll also learn how to set up your own VESSL instances for personal or organizational use.'
+        answer: "The course provides access to a VESSL AI environment for all exercises and projects. You'll also learn how to set up your own VESSL instances for personal or organizational use."
       }
     ]
   },
@@ -277,7 +277,7 @@ const COURSES = {
       {
         week: 1,
         title: 'TrueFoundry Architecture Overview',
-        content: 'Introduction to TrueFoundry's architecture, components, and deployment philosophy.'
+        content: "Introduction to TrueFoundry's architecture, components, and deployment philosophy."
       },
       {
         week: 2,
